@@ -3,7 +3,6 @@
 namespace School\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Prophecy\Prophecy\ObjectProphecy;
 use School\Group;
 use School\GroupRepository;
 use School\GroupService;
@@ -12,34 +11,24 @@ use School\PupilAlreadyInGroupException;
 use School\PupilRepository;
 use School\TooManyPupilsException;
 
-final class GroupServiceTest extends TestCase {
+final class GroupServiceTest extends TestCase
+{
 
-    /** @var Pupil */
-    private $pupil;
+    /**
+     * @test
+     */
+    public function it_should_()
+    {
+        $groupRepository = $this->getMockBuilder('School\GroupRepository')
+          ->getMock();
+        $pupilRepository = $this->getMockBuilder('School\PupilRepository')
+          ->getMock();
 
-    /** @var Group */
-    private $group;
+        $group = new GroupService($groupRepository, $pupilRepository);
 
-    /** @var GroupService */
-    private $groupService;
+        $group->add(123, 234);
 
-    /** @var  GroupRepository | ObjectProphecy */
-    private $groupRepository;
-
-    /** @var  PupilRepository | ObjectProphecy */
-    private $pupilRepository;
-
-
-    protected function setUp () {
-        parent::setUp();
-
-        $this->group = new Group(123);
-        $this->groupRepository = $this->prophesize(GroupRepository::class);
-
-        $this->pupil = new Pupil(456);
-        $this->pupilRepository = $this->prophesize(PupilRepository::class);
-        /** @noinspection PhpParamsInspection */
-        $this->groupService = new GroupService($this->groupRepository->reveal(), $this->pupilRepository->reveal());
+        $this->assertTrue(true);
     }
 
 }
