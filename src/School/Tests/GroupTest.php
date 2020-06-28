@@ -4,11 +4,8 @@ namespace School\Tests;
 
 use PHPUnit\Framework\TestCase;
 use School\Group;
-use School\GroupRepository;
-use School\GroupService;
 use School\Pupil;
 use School\PupilAlreadyInGroupException;
-use School\PupilRepository;
 use School\TooManyPupilsException;
 
 final class GroupTest extends TestCase
