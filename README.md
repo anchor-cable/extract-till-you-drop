@@ -4,7 +4,7 @@ Code for refactoring talk "Extract Till You Drop" by Mathias Verraes.
 See the screencast at [http://verraes.net/2013/09/extract-till-you-drop/](http://verraes.net/2013/09/extract-till-you-drop/)
 (Note that this version of the code has changed since that recording was made.)
 
-I(ganchiku) have did the tutorial in 2013, and wrote an article in blog, and now I have a chance to share my knowledge with a company I work.
+I(ganchiku) have did the tutorial in 2013, and wrote [an article in blog](https://phpmentors.jp/post/63422732564/symfony-meetup-tokyo), and now I have a chance to share my knowledge with a company I work.
 This good tutorial has came up to my mind, and I have fixed the code with PHP7.4 and PHPUnit9. Many thanks to the original author, Mathias.
 
 ## Kata
@@ -146,6 +146,6 @@ final class GroupServiceStubTest extends TestCase
 
 ```
 
-You can run the test, but you cannot assure the if the method `persist` has called. You see the tests still pass when you remove the method, `persist`, from GroupService.php.
+You can run the test, but you cannot assure the if the method `persist` has called. You see the tests still pass when you remove the method, `persist`, from GroupService.php. If you run the one in commited, the test fails if you remove `persist` method from GroupService class.
 
 See: https://martinfowler.com/articles/mocksArentStubs.html
