@@ -70,37 +70,6 @@ final class GroupServiceTest extends TestCase
         $this->assertEquals([$this->pupil], $this->group->getPupils());
     }
 
-    /**
-     * @test
-     */
-    public function it_should_disallow_more_than_three_pupils_in_group()
-    {
-        $this->group->addPupil(new Pupil(1));
-        $this->group->addPupil(new Pupil(2));
-        $this->group->addPupil(new Pupil(3));
-
-        $this->expectThatAGroupIsFound();
-        $this->expectThatAPupilIsFound();
-
-        $this->expectException(TooManyPupilsException::class);
-        $this->SUT->enlistPupilInGroup(self::GROUP_ID, self::PUPIL_ID);
-    }
-
-    /**
-     * @test
-     */
-    public function it_should_disallow_duplicate_pupils()
-    {
-        $this->group->addPupil($this->pupil);
-
-        $this->expectThatAGroupIsFound();
-        $this->expectThatAPupilIsFound();
-
-        $this->expectException(PupilAlreadyInGroupException::class);
-        $this->SUT->enlistPupilInGroup(self::GROUP_ID, self::PUPIL_ID);
-
-    }
-
     private function expectThatAGroupIsFound(): void
     {
         $this->groupRepository
