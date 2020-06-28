@@ -29,12 +29,11 @@ class GroupService
                 $pupilAlreadyInGroup = true;
             }
         }
-        if (!$pupilAlreadyInGroup) {
-            $group->addPupil($pupilToBeEnlisted);
-            $this->groupRepository->persist($group);
-        } else {
+        if ($pupilAlreadyInGroup) {
             throw new PupilAlreadyInGroupException();
         }
+        $group->addPupil($pupilToBeEnlisted);
+        $this->groupRepository->persist($group);
     }
 
     /**
