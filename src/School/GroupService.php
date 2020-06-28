@@ -33,7 +33,7 @@ class GroupService
                 $group->addPupil($addPupil);
                 $this->repository->persist($group);
             } else {
-                throw new PupilAlreadyInGroupException;
+                throw new PupilAlreadyInGroupException();
             }
         } else {
             throw new TooManyPupilsException();

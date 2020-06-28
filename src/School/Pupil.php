@@ -5,7 +5,7 @@ namespace School;
 class Pupil
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -16,7 +16,7 @@ class Pupil
 
 
     /**
-     * @return integer
+     * @return int
      */
     public function getId() : int
     {
