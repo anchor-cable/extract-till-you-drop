@@ -66,7 +66,7 @@ final class GroupServiceTest extends TestCase
         $this->expectThatAPupilIsFound();
         $this->expectThatGroupIsPersisted();
 
-        $this->SUT->add(self::GROUP_ID, self::PUPIL_ID);
+        $this->SUT->enlistPupilInGroup(self::GROUP_ID, self::PUPIL_ID);
         $this->assertEquals([$this->pupil], $this->group->getPupils());
     }
 
@@ -83,7 +83,7 @@ final class GroupServiceTest extends TestCase
         $this->expectThatAPupilIsFound();
 
         $this->expectException(TooManyPupilsException::class);
-        $this->SUT->add(self::GROUP_ID, self::PUPIL_ID);
+        $this->SUT->enlistPupilInGroup(self::GROUP_ID, self::PUPIL_ID);
     }
 
     /**
@@ -97,7 +97,7 @@ final class GroupServiceTest extends TestCase
         $this->expectThatAPupilIsFound();
 
         $this->expectException(PupilAlreadyInGroupException::class);
-        $this->SUT->add(self::GROUP_ID, self::PUPIL_ID);
+        $this->SUT->enlistPupilInGroup(self::GROUP_ID, self::PUPIL_ID);
 
     }
 
