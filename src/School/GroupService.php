@@ -22,21 +22,21 @@ class GroupService
 
         $pupilsInGroup = $group->getPupils();
         $pupilToBeEnlisted = $this->pupilRepository->find($pupilId);
-        if (count($pupilsInGroup) < 3) {
-            $pupilAlreadyInGroup = false;
-            foreach ($pupilsInGroup as $pupilInGroup) {
-                if ($pupilInGroup->getId() == $pupilToBeEnlisted->getId()) {
-                    $pupilAlreadyInGroup = true;
-                }
-            }
-            if (!$pupilAlreadyInGroup) {
-                $group->addPupil($pupilToBeEnlisted);
-                $this->groupRepository->persist($group);
-            } else {
-                throw new PupilAlreadyInGroupException();
-            }
-        } else {
+
+        if (count($pupilsInGroup) >= 3) {
             throw new TooManyPupilsException();
+        }
+        $pupilAlreadyInGroup = false;
+        foreach ($pupilsInGroup as $pupilInGroup) {
+            if ($pupilInGroup->getId() == $pupilToBeEnlisted->getId()) {
+                $pupilAlreadyInGroup = true;
+            }
+        }
+        if (!$pupilAlreadyInGroup) {
+            $group->addPupil($pupilToBeEnlisted);
+            $this->groupRepository->persist($group);
+        } else {
+            throw new PupilAlreadyInGroupException();
         }
     }
 }
