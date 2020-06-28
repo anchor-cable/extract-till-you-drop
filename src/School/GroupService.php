@@ -20,14 +20,13 @@ class GroupService
     {
         $group = $this->groupRepository->find($groupId);
 
-        $pupilsInGroup = $group->getPupils();
         $pupilToBeEnlisted = $this->pupilRepository->find($pupilId);
 
-        if (count($pupilsInGroup) >= 3) {
+        if (count($group->getPupils()) >= 3) {
             throw new TooManyPupilsException();
         }
         $pupilAlreadyInGroup = false;
-        foreach ($pupilsInGroup as $pupilInGroup) {
+        foreach ($group->getPupils() as $pupilInGroup) {
             if ($pupilInGroup->getId() == $pupilToBeEnlisted->getId()) {
                 $pupilAlreadyInGroup = true;
             }
