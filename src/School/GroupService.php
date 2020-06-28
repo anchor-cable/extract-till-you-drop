@@ -5,10 +5,10 @@ namespace School;
 class GroupService
 {
     /** @var GroupRepository */
-    private $repository;
+    private GroupRepository $repository;
 
     /** @var PupilRepository */
-    private $pupilRepository;
+    private PupilRepository $pupilRepository;
 
     public function __construct(GroupRepository $repository, PupilRepository $pupilRepository)
     {
