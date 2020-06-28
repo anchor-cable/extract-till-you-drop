@@ -4,12 +4,12 @@ namespace School;
 
 class Group
 {
-    private $id;
+    private int $id;
 
     /**
      * @var Pupil[]
      */
-    private $pupils = [];
+    private array $pupils = [];
 
     public function __construct(int $id)
     {

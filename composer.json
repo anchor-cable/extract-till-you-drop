@@ -4,13 +4,15 @@
     "type": "demo",
     "description": "Extract Till You Drop",
     "autoload": {
-        "psr-0": { "": "src/" }
+        "classmap": [
+            "src/"
+        ]
     },
     "require": {
-        "php": ">=7.1"
+        "php": ">=7.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "^9"
     },
     "config": {
         "bin-dir": "bin"
