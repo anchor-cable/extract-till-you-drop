@@ -20,12 +20,12 @@ class GroupService
     {
         $group = $this->groupRepository->find($groupId);
 
-        $pupilToBeEnlisted = $this->pupilRepository->find($pupilId);
+        $pupil = $this->pupilRepository->find($pupilId);
 
         $this->guardAgainstTooManyPupils($group);
-        $this->guardAgainstDuplicatePupils($group, $pupilToBeEnlisted);
-        
-        $group->addPupil($pupilToBeEnlisted);
+        $this->guardAgainstDuplicatePupils($group, $pupil);
+
+        $group->addPupil($pupil);
         $this->groupRepository->persist($group);
     }
 
@@ -42,14 +42,14 @@ class GroupService
 
     /**
      * @param Group $group
-     * @param Pupil $pupilToBeEnlisted
+     * @param Pupil $pupil
      * @throws PupilAlreadyInGroupException
      */
-    private function guardAgainstDuplicatePupils(Group $group, Pupil $pupilToBeEnlisted): void
+    private function guardAgainstDuplicatePupils(Group $group, Pupil $pupil): void
     {
         $pupilAlreadyInGroup = false;
         foreach ($group->getPupils() as $pupilInGroup) {
-            if ($pupilInGroup->getId() == $pupilToBeEnlisted->getId()) {
+            if ($pupilInGroup->getId() == $pupil->getId()) {
                 $pupilAlreadyInGroup = true;
             }
         }
