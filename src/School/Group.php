@@ -50,7 +50,7 @@ class Group
     {
         $pupilAlreadyInGroup = false;
         foreach ($this->getPupils() as $pupilInGroup) {
-            if ($pupilInGroup->getId() == $pupil->getId()) {
+            if ($pupilInGroup->getId() === $pupil->getId()) {
                 $pupilAlreadyInGroup = true;
             }
         }
